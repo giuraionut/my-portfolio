@@ -11,7 +11,7 @@ import { post2 } from './post-2'
 import { post3 } from './post-3'
 
 const collections: CollectionSlug[] = [
-  'categories',
+  'skill-categories',
   'media',
   'pages',
   'posts',
@@ -20,7 +20,7 @@ const collections: CollectionSlug[] = [
   'search',
 ]
 
-const globals: GlobalSlug[] = ['header', 'footer']
+const globals: GlobalSlug[] = ['profile', 'landing-page']
 
 const categories = ['Technology', 'News', 'Finance', 'Design', 'Software', 'Engineering']
 
@@ -44,6 +44,7 @@ export const seed = async ({
   payload.logger.info(`— Clearing collections and globals...`)
 
   // clear the database
+  /*
   await Promise.all(
     globals.map((global) =>
       payload.updateGlobal({
@@ -58,6 +59,7 @@ export const seed = async ({
       }),
     ),
   )
+  */
 
   await Promise.all(
     collections.map((collection) => payload.db.deleteMany({ collection, req, where: {} })),
@@ -129,10 +131,9 @@ export const seed = async ({
     }),
     categories.map((category) =>
       payload.create({
-        collection: 'categories',
+        collection: 'skill-categories',
         data: {
           title: category,
-          slug: category,
         },
       }),
     ),
@@ -216,7 +217,7 @@ export const seed = async ({
   ])
 
   payload.logger.info(`— Seeding globals...`)
-
+/*
   await Promise.all([
     payload.updateGlobal({
       slug: 'header',
@@ -273,7 +274,7 @@ export const seed = async ({
       },
     }),
   ])
-
+*/
   payload.logger.info('Seeded database successfully!')
 }
 

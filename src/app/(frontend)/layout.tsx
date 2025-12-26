@@ -6,18 +6,28 @@ import { GeistSans } from 'geist/font/sans'
 import React from 'react'
 
 import { AdminBar } from '@/components/AdminBar'
-import { Footer } from '@/Footer/Component'
-import { Header } from '@/Header/Component'
+import PortfolioHeader from '@/components/PortfolioHeader'
+import PortfolioFooter from '@/components/PortfolioFooter'
 import { Providers } from '@/providers'
 import { InitTheme } from '@/providers/Theme/InitTheme'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { draftMode } from 'next/headers'
+import { getPayload } from 'payload'
+import config from '@payload-config'
 
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
+  const payload = await getPayload({ config })
+  const profile = await payload.findGlobal({ slug: 'profile' })
+  const name = profile.name || 'Portfolio'
+  const socialLinks = profile.socialLinks?.map(link => ({
+    id: link.id || undefined,
+    name: link.name || '',
+    url: link.url || '',
+  })) || []
 
   return (
     <html className={cn(GeistSans.variable, GeistMono.variable)} lang="en" suppressHydrationWarning>
@@ -34,9 +44,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             }}
           />
 
-          <Header />
+          <PortfolioHeader name={name} />
           {children}
-          <Footer />
+          <PortfolioFooter name={name} socialLinks={socialLinks} />
         </Providers>
       </body>
     </html>

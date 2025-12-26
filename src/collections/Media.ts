@@ -1,6 +1,4 @@
 import type { CollectionConfig } from 'payload'
-import path from 'path'
-import { fileURLToPath } from 'url'
 import {
   FixedToolbarFeature,
   InlineToolbarFeature,
@@ -9,9 +7,6 @@ import {
 
 import { anyone } from '../access/anyone'
 import { authenticated } from '../access/authenticated'
-
-const filename = fileURLToPath(import.meta.url)
-const dirname = path.dirname(filename)
 
 export const Media: CollectionConfig = {
   slug: 'media',
@@ -38,7 +33,9 @@ export const Media: CollectionConfig = {
     },
   ],
   upload: {
-    staticDir: path.resolve(dirname, '../../public/media'),
+    // IMPORTANT: specific staticDir is removed so Vercel doesn't look for a local folder
+    // We enable disableLocalStorage to force usage of the Vercel Blob plugin
+    disableLocalStorage: true,
     adminThumbnail: 'thumbnail',
     focalPoint: true,
     imageSizes: [

@@ -1,26 +1,35 @@
 import type { CollectionConfig } from 'payload'
 
-import { authenticated } from '../../access/authenticated'
-
 export const Users: CollectionConfig = {
   slug: 'users',
-  access: {
-    admin: authenticated,
-    create: authenticated,
-    delete: authenticated,
-    read: authenticated,
-    update: authenticated,
-  },
-  admin: {
-    defaultColumns: ['name', 'email'],
-    useAsTitle: 'name',
-  },
   auth: true,
+  admin: {
+    useAsTitle: 'email',
+  },
+  access: {
+    // Only admins can access the admin panel
+    admin: ({ req: { user } }) => user?.['role'] === 'admin',
+    // Only admins can create new users
+    create: ({ req: { user } }) => user?.['role'] === 'admin',
+    // Only admins can read user data
+    read: ({ req: { user } }) => user?.['role'] === 'admin',
+    // Only admins can update user data
+    update: ({ req: { user } }) => user?.['role'] === 'admin',
+    // Only admins can delete user data
+    delete: ({ req: { user } }) => user?.['role'] === 'admin',
+  },
   fields: [
+    // Email is included by default because of auth: true
     {
-      name: 'name',
-      type: 'text',
+      name: 'role',
+      type: 'select',
+      options: [
+        { label: 'Admin', value: 'admin' },
+        { label: 'User', value: 'user' },
+      ],
+      required: true,
+      defaultValue: 'user',
+      saveToJWT: true, // Important: allows we check role immediately on login
     },
   ],
-  timestamps: true,
 }

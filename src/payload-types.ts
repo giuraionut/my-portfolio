@@ -377,6 +377,7 @@ export interface SkillCategory {
  */
 export interface User {
   id: number;
+  name?: string | null;
   role: 'admin' | 'user';
   updatedAt: string;
   createdAt: string;
@@ -1326,6 +1327,7 @@ export interface MediaSelect<T extends boolean = true> {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  name?: T;
   role?: T;
   updatedAt?: T;
   createdAt?: T;

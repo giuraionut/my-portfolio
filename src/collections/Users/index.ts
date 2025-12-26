@@ -19,7 +19,12 @@ export const Users: CollectionConfig = {
     delete: ({ req: { user } }) => user?.['role'] === 'admin',
   },
   fields: [
-    // Email is included by default because of auth: true
+    // 1. ADD THIS FIELD BACK
+    {
+      name: 'name',
+      type: 'text',
+    },
+    // 2. Your Role field
     {
       name: 'role',
       type: 'select',
@@ -29,7 +34,7 @@ export const Users: CollectionConfig = {
       ],
       required: true,
       defaultValue: 'user',
-      saveToJWT: true, // Important: allows we check role immediately on login
+      saveToJWT: true,
     },
   ],
 }

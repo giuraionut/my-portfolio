@@ -23,11 +23,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const payload = await getPayload({ config })
   const profile = await payload.findGlobal({ slug: 'profile' })
   const name = profile.name || 'Portfolio'
-  const socialLinks = profile.socialLinks?.map(link => ({
-    id: link.id || undefined,
-    name: link.name || '',
-    url: link.url || '',
-  })) || []
+  const socialLinks =
+    profile.socialLinks?.map((link) => ({
+      id: link.id || undefined,
+      name: link.name || '',
+      url: link.url || '',
+    })) || []
 
   return (
     <html className={cn(GeistSans.variable, GeistMono.variable)} lang="en" suppressHydrationWarning>
@@ -55,9 +56,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 export const metadata: Metadata = {
   metadataBase: new URL(getServerSideURL()),
-  openGraph: mergeOpenGraph(),
-  twitter: {
-    card: 'summary_large_image',
-    creator: '@payloadcms',
+  title: {
+    template: '%s | Ionut Giura', // This adds your name to the end of every page tab
+    default: 'Ionut Giura | Software Engineer', // The default tab name for the home page
   },
+  description:
+    'Software Engineer specializing in full-stack web development and enterprise solutions.',
+  openGraph: mergeOpenGraph({
+    title: 'Ionut Giura',
+    description: 'Software Engineer Portfolio',
+  }),
 }

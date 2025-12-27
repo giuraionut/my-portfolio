@@ -58,6 +58,6 @@ export default async function Page() {
 
 export function generateMetadata(): Metadata {
   return {
-    title: `Ionut Giura Website Posts`,
+    title: `Posts | Ionut Giura`,
   }
 }

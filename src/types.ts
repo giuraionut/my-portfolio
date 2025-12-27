@@ -22,7 +22,6 @@ export interface Skill {
 export interface Project {
   id?: string
   title: string
-  slug: string
   description: string
   imageUrl?: string | null
   liveUrl?: string | null
@@ -34,9 +33,9 @@ export interface Project {
 }
 
 export interface PersonalInfo {
-    title: string
-    location?: string | null
-    name: string
-    avatarUrl?: string | null
-    resumeUrl?: string | null
+  title: string
+  location?: string | null
+  name: string
+  avatarUrl?: string | null
+  resumeUrl?: string | null
 }

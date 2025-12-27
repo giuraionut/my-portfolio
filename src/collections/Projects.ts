@@ -17,12 +17,6 @@ export const Projects: CollectionConfig = {
       required: true,
     },
     {
-      name: 'slug',
-      type: 'text',
-      required: true,
-      unique: true,
-    },
-    {
       name: 'featured',
       type: 'checkbox',
       defaultValue: false,

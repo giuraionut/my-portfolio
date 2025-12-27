@@ -760,7 +760,6 @@ export interface Skill {
 export interface Project {
   id: number;
   title: string;
-  slug: string;
   featured?: boolean | null;
   order?: number | null;
   description: string;
@@ -1374,7 +1373,6 @@ export interface SkillCategoriesSelect<T extends boolean = true> {
  */
 export interface ProjectsSelect<T extends boolean = true> {
   title?: T;
-  slug?: T;
   featured?: T;
   order?: T;
   description?: T;

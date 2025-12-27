@@ -48,17 +48,25 @@ export default function HeroSectionUI({
       <div className="flex items-center gap-4">
         <TooltipProvider>
           {socialLinks.map((link) => {
+            const isEmail = link.name.toLowerCase() === 'email'
+
             return (
               <Tooltip key={link.name}>
                 <TooltipTrigger asChild>
-                  <Link href={link.url} target="_blank">
+                  <Link
+                    href={isEmail ? `mailto:${link.url}` : link.url}
+                    target={isEmail ? '_self' : '_blank'}
+                    rel={isEmail ? undefined : 'noopener noreferrer'}
+                    className="transition-opacity hover:opacity-80"
+                  >
                     <span className="sr-only">{link.name}</span>
-                    {link.name === 'github' && <GitHubIcon />}
-                    {link.name === 'linkedin' && <LinkedInIcon />}
-                    {link.name === 'email' && <Mail />}
+                    {link.name.toLowerCase() === 'github' && <GitHubIcon />}
+                    {link.name.toLowerCase() === 'linkedin' && <LinkedInIcon />}
+                    {isEmail && <Mail />}
                   </Link>
                 </TooltipTrigger>
-                <TooltipContent>{link.url}</TooltipContent>
+                {/* capitalize ensures it looks like 'Github' or 'Email' */}
+                <TooltipContent className="capitalize">{link.name}</TooltipContent>
               </Tooltip>
             )
           })}

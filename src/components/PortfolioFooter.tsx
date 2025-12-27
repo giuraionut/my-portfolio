@@ -44,7 +44,7 @@ export default function Footer({ name, socialLinks }: FooterProps) {
                       {link.name.toLowerCase() === 'email' && <Mail size={18} />}
                     </a>
                   </TooltipTrigger>
-                  <TooltipContent>{link.name}</TooltipContent>
+                  <TooltipContent className="capitalize">{link.name}</TooltipContent>
                 </Tooltip>
               </TooltipProvider>
             ))}

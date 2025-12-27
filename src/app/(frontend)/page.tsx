@@ -46,7 +46,11 @@ export default async function Page() {
         socialLinks={socialLinks}
         resumeUrl={personalInfo.resumeUrl || ''}
       />
-      <AboutSectionUI content={aboutContent} personalInfo={personalInfo} />
+      <AboutSectionUI
+        content={aboutContent}
+        personalInfo={personalInfo}
+        resumeUrl={personalInfo.resumeUrl || ''}
+      />
       <SkillsSectionUI content={skillsContent} skills={skills} />
       <ProjectsSectionUI content={projectsContent} projects={projects} />
       <ContactSectionUI content={contactContent} socialLinks={socialLinks} />

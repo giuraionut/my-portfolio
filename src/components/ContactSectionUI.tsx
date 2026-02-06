@@ -7,7 +7,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
 
 import { Card, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
 import {
   Form,
   FormField,
@@ -28,6 +27,7 @@ import { ContentSection, SocialLink } from '@/types'
 import MotionContainer from '@/components/MotionContainer'
 import GitHubIcon from '@/components/icons/GitHubIcon'
 import LinkedInIcon from '@/components/icons/Linkedin'
+import { RainbowButton } from './ui/rainbow-button'
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -100,7 +100,7 @@ export default function ContactSectionUI({ content, socialLinks }: ContactProps)
   const ITEM_STAGGER = 0.1
 
   return (
-    <section id="contact" className="py-20 lg:py-28 px-6 sm:px-8 bg-gray-50 dark:bg-gray-800">
+    <section id="contact" className="py-20 lg:py-28 px-6 sm:px-8 bg-transparent">
       <MotionContainer useInView={true} once={true} viewportAmount={0.15} animation="slideUp">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
@@ -125,7 +125,7 @@ export default function ContactSectionUI({ content, socialLinks }: ContactProps)
               delay={SECTION_BASE_DELAY}
             >
               <div className="md:col-span-2">
-                <Card className="border-none shadow-md bg-white dark:bg-gray-900 h-full">
+                <Card className="border-none shadow-md bg-transparent h-full">
                   <CardContent className="pt-6">
                     <div className="space-y-6">
                       {socialLinks &&
@@ -179,7 +179,7 @@ export default function ContactSectionUI({ content, socialLinks }: ContactProps)
               delay={SECTION_BASE_DELAY + COLUMN_STAGGER}
             >
               <div className="md:col-span-3">
-                <Card className="border-none shadow-md bg-white dark:bg-gray-900">
+                <Card className="border-none shadow-md bg-transparent">
                   <CardContent className="pt-6">
                     <Form {...form}>
                       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -217,7 +217,7 @@ export default function ContactSectionUI({ content, socialLinks }: ContactProps)
                                     placeholder="Your Name"
                                     {...field}
                                     disabled={isSubmitting}
-                                    className="bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+                                    className="bg-transparent border-gray-200 dark:border-gray-700"
                                   />
                                 </FormControl>
                                 <FormMessage />
@@ -238,7 +238,7 @@ export default function ContactSectionUI({ content, socialLinks }: ContactProps)
                                     placeholder="your.email@example.com"
                                     {...field}
                                     disabled={isSubmitting}
-                                    className="bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700"
+                                    className="bg-transparent border-gray-200 dark:border-gray-700"
                                   />
                                 </FormControl>
                                 <FormMessage />
@@ -260,7 +260,7 @@ export default function ContactSectionUI({ content, socialLinks }: ContactProps)
                                   rows={5}
                                   {...field}
                                   disabled={isSubmitting}
-                                  className="bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 resize-none"
+                                  className="bg-transparent border-gray-200 dark:border-gray-700 resize-none"
                                 />
                               </FormControl>
                               <FormMessage />
@@ -274,7 +274,8 @@ export default function ContactSectionUI({ content, socialLinks }: ContactProps)
                           customTransition="spring"
                         >
                           <div>
-                            <Button
+                            <RainbowButton
+                              variant="outline"
                               type="submit"
                               className="w-full cursor-pointer"
                               disabled={isSubmitting}
@@ -312,7 +313,7 @@ export default function ContactSectionUI({ content, socialLinks }: ContactProps)
                                   <Mail className="ml-2 h-4 w-4" />
                                 </>
                               )}
-                            </Button>
+                            </RainbowButton>
                           </div>
                         </MotionContainer>
                       </form>

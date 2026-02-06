@@ -4,6 +4,7 @@ import AboutSectionUI from '@/components/AboutSectionUI'
 import SkillsSectionUI from '@/components/SkillsSectionUI'
 import ProjectsSectionUI from '@/components/ProjectsSectionUI'
 import ContactSectionUI from '@/components/ContactSectionUI'
+import { GlobalBackground } from '@/components/GlobalBackground'
 import { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 
@@ -37,7 +38,8 @@ export default async function Page() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col justify-between">
+    <main className="flex min-h-screen flex-col justify-between relative">
+      <GlobalBackground />
       <HeroSectionUI
         name={personalInfo.name}
         avatarUrl={personalInfo.avatarUrl || ''}

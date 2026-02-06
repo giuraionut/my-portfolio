@@ -3,7 +3,14 @@ import type { Metadata } from 'next'
 import { cn } from '@/utilities/ui'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
+import { VT323 } from 'next/font/google'
 import React from 'react'
+
+const vt323 = VT323({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-vt323',
+})
 
 import { AdminBar } from '@/components/AdminBar'
 import PortfolioHeader from '@/components/PortfolioHeader'
@@ -31,7 +38,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     })) || []
 
   return (
-    <html className={cn(GeistSans.variable, GeistMono.variable)} lang="en" suppressHydrationWarning>
+    <html
+      className={cn(GeistSans.variable, GeistMono.variable, vt323.variable)}
+      lang="en"
+      suppressHydrationWarning
+    >
       <head>
         <InitTheme />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />

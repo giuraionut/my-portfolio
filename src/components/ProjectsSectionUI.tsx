@@ -19,9 +19,9 @@ export type ProjectProps = {
 export default function ProjectsSectionUI({ content, projects }: ProjectProps) {
   const FEATURED_STAGGER_DELAY = 0.15
   const SECTION_BASE_DELAY = 0.2
-
+  const otherProjects = projects.filter((project) => !project.featured)
   return (
-    <section id="projects" className="py-20 lg:py-28 px-6 sm:px-8 bg-white dark:bg-gray-900">
+    <section id="projects" className="py-10 lg:py-14 px-6 sm:px-4 bg-transparent">
       <MotionContainer useInView={true} once={true} viewportAmount={0.1} animation="slideUp">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -67,31 +67,29 @@ export default function ProjectsSectionUI({ content, projects }: ProjectProps) {
             }
           >
             <div className="max-w-6xl mx-auto">
-              <div className="flex items-center justify-between mb-6 px-2">
-                <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
-                  More Projects
-                </h3>
-              </div>
+              {otherProjects.length > 0 && (
+                <>
+                  <div className="flex items-center justify-between mb-6 px-2">
+                    <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
+                      More Projects
+                    </h3>
+                  </div>
 
-              {projects.filter((project) => !project.featured).length > 0 ? (
-                <MyCarousel
-                  data={projects.filter((project) => !project.featured)}
-                  renderItem={(project) => (
-                    <div className="p-2 h-full">
-                      <ProjectCard project={project} cardStyle="compact" />
-                    </div>
-                  )}
-                  itemsPerView={{
-                    mobile: 1,
-                    tablet: 2,
-                    desktop: 3,
-                  }}
-                  autoplayDelay={5000}
-                />
-              ) : (
-                <p className="text-center text-gray-500 dark:text-gray-400">
-                  No other projects to display yet.
-                </p>
+                  <MyCarousel
+                    data={otherProjects}
+                    renderItem={(project) => (
+                      <div className="p-2 h-full">
+                        <ProjectCard project={project} cardStyle="compact" />
+                      </div>
+                    )}
+                    itemsPerView={{
+                      mobile: 1,
+                      tablet: 2,
+                      desktop: 3,
+                    }}
+                    autoplayDelay={5000}
+                  />
+                </>
               )}
             </div>
           </MotionContainer>

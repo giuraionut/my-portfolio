@@ -51,12 +51,13 @@
     "geist": "^1.5.1",
     "graphql": "^16.12.0",
     "lucide-react": "^0.562.0",
-    "next": "^15.5.9",
+    "motion": "^12.33.0",
+    "next": "16.1.6",
     "next-sitemap": "^4.2.3",
     "payload": "^3.69.0",
     "prism-react-renderer": "^2.4.1",
-    "react": "19.2.3",
-    "react-dom": "19.2.3",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
     "react-hook-form": "7.69.0",
     "sharp": "0.34.5",
     "tailwind-merge": "^3.4.0",
@@ -70,13 +71,13 @@
     "@testing-library/react": "16.3.1",
     "@types/escape-html": "^1.0.4",
     "@types/node": "25.0.3",
-    "@types/react": "19.2.7",
+    "@types/react": "19.2.13",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "5.1.2",
     "autoprefixer": "^10.4.23",
     "copyfiles": "^2.4.1",
     "eslint": "^9.39.2",
-    "eslint-config-next": "^15.5.9",
+    "eslint-config-next": "16.1.6",
     "jsdom": "27.4.0",
     "playwright": "1.57.0",
     "playwright-core": "1.57.0",
@@ -97,5 +98,9 @@
       "esbuild",
       "unrs-resolver"
     ]
+  },
+  "overrides": {
+    "@types/react": "19.2.13",
+    "@types/react-dom": "19.2.3"
   }
 }

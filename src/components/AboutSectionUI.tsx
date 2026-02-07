@@ -46,7 +46,7 @@ export default function AboutSectionUI({ content, personalInfo, resumeUrl }: Abo
               <Terminal className="w-full font-vt323 text-lg md:text-2xl bg-indigo-950/50 text-slate-200 border-slate-800 backdrop-blur-md shadow-2xl min-h-[300px]">
                 <TypingAnimation>&gt; whoami</TypingAnimation>
 
-                <AnimatedSpan className="text-indigo-400">
+                <AnimatedSpan className="dark:text-indigo-400 text-indigo-700">
                   <span>✔ Initializing portfolio context...</span>
                 </AnimatedSpan>
 
@@ -61,7 +61,7 @@ export default function AboutSectionUI({ content, personalInfo, resumeUrl }: Abo
                 <TypingAnimation delay={1000}>&gt; cat about_me.txt</TypingAnimation>
 
                 <AnimatedSpan className="whitespace-pre-wrap leading-relaxed">
-                  <span className="text-slate-300">{firstParagraph}</span>
+                  <span className="dark:text-slate-300 text-slate-700">{firstParagraph}</span>
                 </AnimatedSpan>
 
                 {otherParagraphs.map((para, i) => (
@@ -72,7 +72,7 @@ export default function AboutSectionUI({ content, personalInfo, resumeUrl }: Abo
 
                 <TypingAnimation delay={2000}>&gt; ls skills/</TypingAnimation>
 
-                <AnimatedSpan className="text-blue-400">
+                <AnimatedSpan className="dark:text-blue-400 text-blue-700">
                   <span>React, Node.js, Angular, C, MATLAB, PostgreSQL</span>
                 </AnimatedSpan>
 

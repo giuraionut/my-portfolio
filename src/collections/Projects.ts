@@ -38,6 +38,11 @@ export const Projects: CollectionConfig = {
       required: true,
     },
     {
+      name: 'video',
+      type: 'upload',
+      relationTo: 'media',
+    },
+    {
       name: 'skills',
       type: 'relationship',
       relationTo: 'skills',

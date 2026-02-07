@@ -764,6 +764,7 @@ export interface Project {
   order?: number | null;
   description: string;
   image: number | Media;
+  video?: (number | null) | Media;
   skills?: (number | Skill)[] | null;
   liveUrl?: string | null;
   githubUrl?: string | null;
@@ -1377,6 +1378,7 @@ export interface ProjectsSelect<T extends boolean = true> {
   order?: T;
   description?: T;
   image?: T;
+  video?: T;
   skills?: T;
   liveUrl?: T;
   githubUrl?: T;

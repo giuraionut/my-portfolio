@@ -26,21 +26,33 @@ export default function ProjectCard({ project, cardStyle = 'default' }: ProjectC
 
       <Card className="relative h-full flex flex-col overflow-hidden border-border/50 bg-background/50 backdrop-blur-xl transition-all duration-300 group-hover:translate-y-[-4px] group-hover:shadow-2xl group-hover:shadow-primary/10">
         <CardContent className="p-0 flex flex-col flex-grow">
-          {/* Image Container */}
+          {/* Media Container */}
           <div
             className={cn(
               'relative overflow-hidden w-full',
               cardStyle === 'featured' ? 'aspect-video' : 'h-52',
             )}
           >
-            {project.imageUrl && (
-              <Image
-                src={project.imageUrl}
-                alt={`${project.title} screenshot`}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-110"
+            {project.videoUrl ? (
+              <video
+                src={project.videoUrl}
+                poster={project.imageUrl || undefined}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
+            ) : (
+              project.imageUrl && (
+                <Image
+                  src={project.imageUrl}
+                  alt={`${project.title} screenshot`}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              )
             )}
             {/* Overlay Gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-60"></div>

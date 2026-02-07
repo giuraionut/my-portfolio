@@ -94,6 +94,7 @@ const mapProjects = (projects: Project[]): UIProject[] => {
     title: project.title,
     description: project.description,
     imageUrl: getUrl(project.image),
+    videoUrl: getUrl(project.video),
     liveUrl: project.liveUrl,
     githubUrl: project.githubUrl,
     featured: project.featured || false,

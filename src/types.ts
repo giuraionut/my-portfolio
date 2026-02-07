@@ -24,6 +24,7 @@ export interface Project {
   title: string
   description: string
   imageUrl?: string | null
+  videoUrl?: string | null
   liveUrl?: string | null
   githubUrl?: string | null
   featured: boolean
